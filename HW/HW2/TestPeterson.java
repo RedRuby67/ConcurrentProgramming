@@ -24,10 +24,10 @@ public class TestPeterson implements Runnable {
 
     public static void main(String args[]) {
         int i = 0;   
-	int wrong = 0;
+        int wrong = 0;
 
-	long startTime = System.nanoTime();
-        while (i<noOfExperiments) {
+        long startTime = System.nanoTime();
+        while (i < noOfExperiments) {
             count = 0;
 
 	    Thread t1 = new Thread(new TestPeterson(0));
@@ -35,7 +35,7 @@ public class TestPeterson implements Runnable {
 
             t1.start();
             t2.start();
-	    try {
+	        try {
                 t1.join();t2.join();
             }
             catch (InterruptedException e) {}
@@ -47,8 +47,8 @@ public class TestPeterson implements Runnable {
 
 	    i = i + 1;
         }
-	long endTime = System.nanoTime();
-	System.out.println("That took " + (endTime - startTime)/1000000 + " milliseconds"); 
+        long endTime = System.nanoTime();
+        System.out.println("That took " + (endTime - startTime)/1000000 + " milliseconds"); 
         System.out.println("Mistakes:  " + wrong + "/" + noOfExperiments);
     }
 
